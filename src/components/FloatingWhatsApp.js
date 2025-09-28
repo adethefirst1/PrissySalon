@@ -10,16 +10,16 @@ const FloatingWhatsApp = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
       <button
         onClick={handleWhatsAppClick}
-        className="group relative bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 animate-float"
+        className="group relative bg-green-500 hover:bg-green-600 text-white p-3 sm:p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 animate-float"
         aria-label="Chat on WhatsApp"
       >
         {/* WhatsApp Icon */}
         <div className="flex items-center justify-center">
           <svg 
-            className="w-6 h-6" 
+            className="w-5 h-5 sm:w-6 sm:h-6" 
             fill="currentColor" 
             viewBox="0 0 24 24"
           >
@@ -27,8 +27,8 @@ const FloatingWhatsApp = () => {
           </svg>
         </div>
 
-        {/* Tooltip */}
-        <div className="absolute right-full top-1/2 transform -translate-y-1/2 mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+        {/* Tooltip - Hidden on mobile, shown on hover */}
+        <div className="hidden sm:block absolute right-full top-1/2 transform -translate-y-1/2 mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
           <div className="bg-cream-800 text-cream-50 text-sm font-poppins px-3 py-2 rounded-lg whitespace-nowrap">
             Chat with us
             <div className="absolute left-full top-1/2 transform -translate-y-1/2 border-4 border-transparent border-l-cream-800"></div>

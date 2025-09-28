@@ -35,27 +35,27 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-gradient-to-br from-gray-100 to-gray-200">
+    <section id="services" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-100 to-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-3 sm:mb-4">
             Our Services
           </h2>
-          <p className="font-poppins text-gray-600 text-lg max-w-2xl mx-auto">
+          <p className="font-poppins text-gray-600 text-base sm:text-lg max-w-2xl mx-auto px-4">
             Professional beauty services to enhance your natural beauty
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {services.map((service) => (
             <div 
               key={service.id}
-              className="group relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+              className="group relative bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1 sm:hover:-translate-y-2"
             >
               {/* Service Image */}
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-48 sm:h-56 lg:h-64 overflow-hidden">
                 <img 
                   src={service.image}
                   alt={service.title}
@@ -65,8 +65,8 @@ const ServicesSection = () => {
               </div>
 
               {/* Service Title */}
-              <div className="p-6">
-                <h3 className="font-playfair text-xl font-bold text-gray-800 uppercase tracking-wide">
+              <div className="p-4 sm:p-6">
+                <h3 className="font-playfair text-lg sm:text-xl font-bold text-gray-800 uppercase tracking-wide">
                   {service.title}
                 </h3>
               </div>
