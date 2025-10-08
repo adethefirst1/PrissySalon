@@ -88,7 +88,7 @@ const HeroSection = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 1.5 }}
                   >
-                    Redefining Beauty & Elegance
+                    Be bold, Be beautiful, Be you!
                   </motion.p>
                   <motion.div 
                     className="mt-8"
