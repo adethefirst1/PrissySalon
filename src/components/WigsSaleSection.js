@@ -98,7 +98,7 @@ const WigsSaleSection = () => {
     : wigs.filter(wig => wig.category === selectedCategory);
 
   const handleWhatsAppClick = (wig) => {
-    const message = `Hi! I'm interested in buying the ${wig.name} for ${wig.price}. Is it available?`;
+    const message = `Hi! I'm interested in the ${wig.name} wig. When will it be available?`;
     const whatsappUrl = `https://wa.me/2349090396515?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
@@ -183,13 +183,47 @@ const WigsSaleSection = () => {
           {filteredWigs.map((wig, index) => (
             <motion.div 
               key={wig.id}
-              className="luxury-card group cursor-pointer"
+              className="luxury-card group cursor-pointer relative"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ y: -8, scale: 1.02 }}
             >
+              {/* Coming Soon Overlay */}
+              <div className="absolute inset-0 bg-white/80 backdrop-blur-sm z-10 flex items-center justify-center rounded-3xl">
+                <div className="text-center">
+                  <motion.div
+                    className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    viewport={{ once: true }}
+                  >
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </motion.div>
+                  <motion.h3 
+                    className="font-playfair text-2xl font-bold text-gray-800 mb-2"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    viewport={{ once: true }}
+                  >
+                    Coming Soon
+                  </motion.h3>
+                  <motion.p 
+                    className="font-poppins text-gray-600 text-sm"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                    viewport={{ once: true }}
+                  >
+                    This beautiful wig will be available soon
+                  </motion.p>
+                </div>
+              </div>
               {/* Wig Image */}
               <div className="relative h-64 sm:h-72 overflow-hidden">
                 <motion.img 
@@ -215,18 +249,6 @@ const WigsSaleSection = () => {
                   )}
                 </div>
                 
-                {/* Stock Status */}
-                <div className="absolute top-4 right-4">
-                  {wig.inStock ? (
-                    <span className="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">
-                      In Stock
-                    </span>
-                  ) : (
-                    <span className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">
-                      Out of Stock
-                    </span>
-                  )}
-                </div>
                 
                 {/* Quick View Button */}
                 <motion.div 
@@ -298,33 +320,6 @@ const WigsSaleSection = () => {
                   transition={{ duration: 0.5 }}
                 ></motion.div>
                 
-                {/* Purchase Button */}
-                <motion.button
-                  onClick={() => handleWhatsAppClick(wig)}
-                  disabled={!wig.inStock}
-                  className={`w-full py-4 px-6 rounded-xl font-poppins font-semibold transition-all duration-300 flex items-center justify-center space-x-2 ${
-                    wig.inStock
-                      ? 'bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white shadow-lg hover:shadow-xl'
-                      : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  }`}
-                  whileHover={wig.inStock ? { scale: 1.02 } : {}}
-                  whileTap={wig.inStock ? { scale: 0.98 } : {}}
-                >
-                  <span>{wig.inStock ? 'Purchase Now' : 'Out of Stock'}</span>
-                  {wig.inStock && (
-                    <motion.svg 
-                      className="w-4 h-4" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                      initial={{ x: 0 }}
-                      whileHover={{ x: 4 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                    </motion.svg>
-                  )}
-                </motion.button>
               </div>
             </motion.div>
           ))}
