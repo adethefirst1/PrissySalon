@@ -84,7 +84,7 @@ html {
 /* Luxury Micro-Interactions */
 @layer components {
   .btn-luxury {
-    @apply relative overflow-hidden bg-gradient-to-r from-rose-500 to-pink-500 text-white font-poppins font-medium px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-rose-500/25;
+    @apply relative overflow-hidden bg-gradient-to-r from-rose-500 to-pink-500 text-white font-poppins font-medium px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-gray-200/50;
   }
   
   .btn-luxury::before {
@@ -116,7 +116,7 @@ html {
 
 /* Luxury Card Styles */
 .luxury-card {
-  @apply bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-rose-500/10;
+  @apply bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-gray-200/30;
 }
 
 .luxury-card:hover {
@@ -129,7 +129,7 @@ html {
 }
 
 .hover-luxury-glow {
-  @apply transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-rose-500/25;
+  @apply transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-gray-200/50;
 }
 
 /* Luxury Animations */

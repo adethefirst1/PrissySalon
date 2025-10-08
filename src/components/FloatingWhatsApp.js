@@ -2,8 +2,7 @@ import React from 'react';
 
 const FloatingWhatsApp = () => {
   const handleWhatsAppClick = () => {
-    // Placeholder phone number - replace with actual salon phone number
-    const phoneNumber = "1234567890"; // Replace with actual phone number
+    const phoneNumber = "2349090396515";
     const message = "Hi! I'd like to book an appointment at Prissy Salon.";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');

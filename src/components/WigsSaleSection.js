@@ -99,12 +99,12 @@ const WigsSaleSection = () => {
 
   const handleWhatsAppClick = (wig) => {
     const message = `Hi! I'm interested in buying the ${wig.name} for ${wig.price}. Is it available?`;
-    const whatsappUrl = `https://wa.me/2348123456789?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/2349090396515?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
   return (
-    <section id="wigs-sale" className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-pink-50 via-rose-50/40 to-cream-100 relative overflow-hidden">
+    <section id="wigs-sale" className="py-16 sm:py-20 lg:py-24 bg-gray-50 relative overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(252,165,165,0.1),transparent_50%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(251,191,143,0.08),transparent_50%)]"></div>
