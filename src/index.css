@@ -80,3 +80,159 @@ html {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* Luxury Micro-Interactions */
+@layer components {
+  .btn-luxury {
+    @apply relative overflow-hidden bg-gradient-to-r from-rose-500 to-pink-500 text-white font-poppins font-medium px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-rose-500/25;
+  }
+  
+  .btn-luxury::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-rose-400 to-pink-400 opacity-0 transition-opacity duration-300;
+  }
+  
+  .btn-luxury:hover::before {
+    @apply opacity-100;
+  }
+  
+  .btn-luxury-secondary {
+    @apply relative overflow-hidden bg-transparent border-2 border-rose-500 text-rose-600 font-poppins font-medium px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 hover:bg-rose-500 hover:text-white hover:shadow-xl;
+  }
+  
+  .btn-luxury-secondary::before {
+    content: '';
+    @apply absolute inset-0 bg-rose-500 transform scale-x-0 transition-transform duration-300 origin-left;
+  }
+  
+  .btn-luxury-secondary:hover::before {
+    @apply scale-x-100;
+  }
+  
+  .btn-luxury-secondary span {
+    @apply relative z-10;
+  }
+}
+
+/* Luxury Card Styles */
+.luxury-card {
+  @apply bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-rose-500/10;
+}
+
+.luxury-card:hover {
+  @apply border-rose-200/50;
+}
+
+/* Luxury Hover Effects */
+.hover-luxury {
+  @apply transition-all duration-500 transform hover:scale-105 hover:shadow-2xl;
+}
+
+.hover-luxury-glow {
+  @apply transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-rose-500/25;
+}
+
+/* Luxury Animations */
+.animate-luxury-float {
+  animation: luxuryFloat 4s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmer 2s linear infinite;
+}
+
+/* Luxury Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fdf8f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #f472b6, #ec4899);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #ec4899, #db2777);
+}
+
+/* Luxury Focus States */
+.focus-luxury:focus {
+  @apply outline-none ring-2 ring-rose-500/50 ring-offset-2 ring-offset-cream-50;
+}
+
+/* Luxury Selection */
+::selection {
+  background: rgba(244, 114, 182, 0.2);
+  color: #3d3d3d;
+}
+
+::-moz-selection {
+  background: rgba(244, 114, 182, 0.2);
+  color: #3d3d3d;
+}
+
+/* Modern Line Icons */
+.icon-line {
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-line-thick {
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Luxury Keyframes */
+@keyframes luxuryFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(1deg); }
+  50% { transform: translateY(-12px) rotate(0deg); }
+  75% { transform: translateY(-8px) rotate(-1deg); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px rgba(244, 114, 182, 0.3); }
+  100% { box-shadow: 0 0 20px rgba(244, 114, 182, 0.6), 0 0 30px rgba(244, 114, 182, 0.4); }
+}
+
+@keyframes scaleIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  0% { transform: translateX(-50px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  0% { transform: translateX(50px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}

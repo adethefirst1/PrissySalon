@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -54,37 +55,88 @@ const HeroSection = () => {
               
               {/* Content */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center text-white px-4 max-w-4xl mx-auto">
-                  <h1 className="font-playfair text-4xl md:text-6xl lg:text-7xl font-light mb-6 animate-fade-in text-cream-50 drop-shadow-lg">
+                <motion.div 
+                  className="text-center text-white px-4 max-w-4xl mx-auto"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                >
+                  <motion.h1 
+                    className="font-playfair text-4xl md:text-6xl lg:text-7xl font-light mb-6 text-cream-50 drop-shadow-lg"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1, delay: 0.8 }}
+                  >
                     Prissy Salon
-                  </h1>
-                  <h2 className="font-playfair text-xl md:text-2xl lg:text-3xl font-extralight mb-4 animate-fade-in text-cream-100 drop-shadow-md" style={{ animationDelay: '0.3s' }}>
+                  </motion.h1>
+                  <motion.h2 
+                    className="font-playfair text-xl md:text-2xl lg:text-3xl font-extralight mb-4 text-cream-100 drop-shadow-md"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 1.2 }}
+                  >
                     Hair & Beauty
-                  </h2>
-                  <p className="font-poppins text-base md:text-lg lg:text-xl font-thin animate-fade-in text-cream-200 drop-shadow-sm" style={{ animationDelay: '0.6s' }}>
+                  </motion.h2>
+                  <motion.p 
+                    className="font-poppins text-base md:text-lg lg:text-xl font-thin text-cream-200 drop-shadow-sm"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 1.5 }}
+                  >
                     Redefining Beauty & Elegance
-                  </p>
-                  <div className="mt-8 animate-slide-up" style={{ animationDelay: '0.9s' }}>
-                    <button 
-                      onClick={() => document.getElementById('appointment').scrollIntoView({ behavior: 'smooth' })}
-                      className="bg-blush-400/80 hover:bg-blush-500/90 text-cream-50 font-poppins font-light px-8 py-3 rounded-full text-base transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl backdrop-blur-sm"
+                  </motion.p>
+                  <motion.div 
+                    className="mt-8"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 1.8 }}
+                  >
+                    <motion.button 
+                      onClick={() => document.getElementById('appointment')?.scrollIntoView({ behavior: 'smooth' })}
+                      className="btn-luxury group relative overflow-hidden"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      Book Your Appointment
-                    </button>
-                  </div>
-                </div>
+                      <span className="relative z-10 flex items-center space-x-2">
+                        <span>Book Your Appointment</span>
+                        <motion.svg 
+                          className="w-4 h-4" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                          initial={{ x: 0 }}
+                          whileHover={{ x: 4 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </motion.svg>
+                      </span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-rose-400 to-pink-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </motion.button>
+                  </motion.div>
+                </motion.div>
               </div>
             </div>
           </div>
         ))}
       </Slider>
       
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-5 h-8 border-2 border-cream-200 rounded-full flex justify-center">
-          <div className="w-1 h-2 bg-cream-200 rounded-full mt-2 animate-pulse"></div>
+      {/* Luxury Scroll Indicator */}
+      <motion.div 
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 2.5 }}
+      >
+        <div className="w-6 h-10 border-2 border-rose-300/60 rounded-full flex justify-center group cursor-pointer">
+          <motion.div 
+            className="w-1 h-3 bg-rose-300 rounded-full mt-2"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          ></motion.div>
         </div>
-      </div>
+        <p className="text-rose-300/80 text-xs mt-2 font-poppins font-light tracking-wider">SCROLL</p>
+      </motion.div>
     </section>
   );
 };
