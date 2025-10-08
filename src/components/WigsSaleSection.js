@@ -97,11 +97,6 @@ const WigsSaleSection = () => {
     ? wigs 
     : wigs.filter(wig => wig.category === selectedCategory);
 
-  const handleWhatsAppClick = (wig) => {
-    const message = `Hi! I'm interested in the ${wig.name} wig. When will it be available?`;
-    const whatsappUrl = `https://wa.me/2349090396515?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-  };
 
   return (
     <section id="wigs-sale" className="py-16 sm:py-20 lg:py-24 bg-gray-50 relative overflow-hidden">
