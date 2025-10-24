@@ -7,209 +7,211 @@ const WigsSaleSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [imageLoading, setImageLoading] = useState({});
   
+  // Products data using local images from public/img folder
   const wigs = [
+    // Burmese Curls - Product 1
     {
-      id: 2,
+      id: 1,
       name: "Premium Burmese Curls",
       description: "Luxury Burmese curl wig with natural bounce and heat-resistant fibers",
       images: [
-        "https://drive.google.com/thumbnail?id=1BHRhCRVHzmd_de1Tx08lRGTY-tEw22ai&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1LdXVsw73DNbbFfY5sNel31y1cyn6qv8n&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1f7vGr-AOE15luHEVMGvP8PWplca8qwv9&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1RJDORL2uvgQDWWu0Dv77vUz0A-6TgqaZ&sz=w1000"
+        "/img/Burmese Curls/1/IMG_6675.jpg",
+        "/img/Burmese Curls/1/IMG_6676.jpg",
+        "/img/Burmese Curls/1/IMG_6677.jpg",
+        "/img/Burmese Curls/1/IMG_6678.jpg"
       ],
       category: "Burmese Curls",
       inStock: true,
       isNew: true,
       isSale: false
     },
+    // Burmese Curls - Product 2
     {
-      id: 4,
-      name: "Long Waves",
-      description: "Elegant long wavy hair with premium quality fibers",
-      images: [
-        "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=500&fit=crop&crop=face",
-        "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=500&fit=crop&crop=face"
-      ],
-      category: "Pixie Curls",
-      inStock: true,
-      isNew: false,
-      isSale: true
-    },
-    {
-      id: 7,
+      id: 2,
       name: "Luxury Burmese Curls",
       description: "Premium Burmese curl wig with natural texture and elegant styling",
       images: [
-        "https://drive.google.com/thumbnail?id=1PNdzD3j4JFNLGzLomDyXmhmG1QV7g3M4&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1VyakSE0aAbPvBlUKXmFgQwRRQHtVHaQ5&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1AGYMWsugot_e9n6hg1L2aWNGWXidLBHM&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1WUmLa0d_9ype8bzAx3o1wnsqJhEU-vbv&sz=w1000"
+        "/img/Burmese Curls/2/IMG_6644.jpg",
+        "/img/Burmese Curls/2/IMG_6645.jpg",
+        "/img/Burmese Curls/2/IMG_6646.jpg",
+        "/img/Burmese Curls/2/IMG_6647.jpg"
       ],
       category: "Burmese Curls",
       inStock: true,
       isNew: true,
       isSale: false
     },
+    // Bone Straight - Product 1
     {
-      id: 8,
+      id: 3,
       name: "Premium Bone Straight",
       description: "Luxury bone straight wig with silky smooth texture and natural shine",
       images: [
-        "https://drive.google.com/thumbnail?id=1894PKgdJy7H7JvZTRqMRSfTa_IxexHIg&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1I994gBglcP-qxg6_JcnhzdD2IMBEIWv6&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1fRUQCyCrWlzOaITSnOpA_HaJiJv08JhP&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1SdLzEZFkxCBCx-z4Sb_hs3M6RK2WRV62&sz=w1000"
+        "/img/Bone Straight/1/IMG_6648.jpg",
+        "/img/Bone Straight/1/IMG_6649.jpg",
+        "/img/Bone Straight/1/IMG_6650.jpg",
+        "/img/Bone Straight/1/IMG_6651.jpg"
       ],
       category: "Bone Straight",
       inStock: true,
       isNew: true,
       isSale: false
     },
+    // Bone Straight - Product 2
     {
-      id: 9,
+      id: 4,
       name: "Classic Bone Straight",
       description: "Timeless bone straight wig with premium quality and elegant styling",
       images: [
-        "https://drive.google.com/thumbnail?id=13HFBCpbDPTXK5ZyEz7mZfqoute6s4bd5&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1Tbl4uID0vc6xXkOITujL6f_1asz3bilm&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1kHLIug02zNJnsdqbZl4dJq7xU70QXUAL&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1PlXc8VSZTMEiEJZQDOLrbgoyaSZpR9Od&sz=w1000"
+        "/img/Bone Straight/2/IMG_6667.jpg",
+        "/img/Bone Straight/2/IMG_6668.jpg",
+        "/img/Bone Straight/2/IMG_6669.jpg",
+        "/img/Bone Straight/2/IMG_6670.jpg"
       ],
       category: "Bone Straight",
       inStock: true,
       isNew: true,
       isSale: false
     },
+    // Bone Straight - Product 3
     {
-      id: 10,
+      id: 5,
       name: "Elegant Bone Straight",
       description: "Sophisticated bone straight wig with luxurious texture and perfect styling",
       images: [
-        "https://drive.google.com/thumbnail?id=1iWd9VVJkPlUIxYyEMTYURGZ86K1Po9ie&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1EuWm__21CBZUD0VHpgo6EWy3AGhhlFhU&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1O9WMkZuio4GuDLTMMwpr2ttVZmx5-oDm&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1-TNHaTY4rWHAteCprrr-pG5ap8GiM11A&sz=w1000"
+        "/img/Bone Straight/3/IMG_6671.jpg",
+        "/img/Bone Straight/3/IMG_6672.jpg",
+        "/img/Bone Straight/3/IMG_6673.jpg",
+        "/img/Bone Straight/3/IMG_6674.jpg"
       ],
       category: "Bone Straight",
       inStock: true,
       isNew: true,
       isSale: false
     },
+    // Bone Straight - Product 4
     {
-      id: 11,
+      id: 6,
       name: "Deluxe Bone Straight",
       description: "Premium bone straight wig with exceptional quality and stunning appearance",
       images: [
-        "https://drive.google.com/thumbnail?id=1FcE_cREJ3OJf8_dhgQ2U3G3u8LAXcI0M&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1C3LA4d-MlcWofnrB0yhLiLjXJSOkVSV1&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1t64sRIPF56AfilSraYYdmLgYBjs_nIuV&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1qUb_GhYjn58qs-dBvAFPyXa7mWr49KzN&sz=w1000"
+        "/img/Bone Straight/4/IMG_6658.jpg",
+        "/img/Bone Straight/4/IMG_6659.jpg",
+        "/img/Bone Straight/4/IMG_6660.jpg",
+        "/img/Bone Straight/4/IMG_6661.jpg"
       ],
       category: "Bone Straight",
       inStock: true,
       isNew: true,
       isSale: false
     },
+    // Bone Straight - Product 5
     {
-      id: 12,
+      id: 7,
       name: "Ultimate Bone Straight",
       description: "The finest bone straight wig with superior quality and flawless styling",
       images: [
-        "https://drive.google.com/thumbnail?id=1Ag3M2wkAoWsPs2TN75HmdL0qGVlUJA38&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1jijfvOz-xbISCty3gUyqczxIcNmpSiwY&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1FBnHJcPyjXPyBP5lT48ame13Rcdtg1kW&sz=w1000",
-        "https://drive.google.com/thumbnail?id=197SseFgYDbOkCefUOztENEh0MWkoyanj&sz=w1000"
+        "/img/Bone Straight/5/IMG_6683.jpg",
+        "/img/Bone Straight/5/IMG_6684.jpg"
       ],
       category: "Bone Straight",
       inStock: true,
       isNew: true,
       isSale: false
     },
+    // Bone Straight - Product 6
     {
-      id: 13,
+      id: 8,
       name: "Signature Bone Straight",
       description: "Exclusive bone straight wig with signature quality and elegant design",
       images: [
-        "https://drive.google.com/thumbnail?id=1hbzxken2Ep_3APmiLPO55UE0Nw6TGK3i&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1jWatL1cx-8dAF2QYBbGfkSY9NmDPmuBI&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1ZfrU828etLAWtpjVgLXXtAgdsCjTwQUD&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1WSDUf4CgdfTKRQvBvKuK2CbHMcS4zkyB&sz=w1000"
+        "/img/Bone Straight/6/IMG_6662.jpg",
+        "/img/Bone Straight/6/IMG_6663.jpg",
+        "/img/Bone Straight/6/IMG_6664.jpg",
+        "/img/Bone Straight/6/IMG_6665.jpg",
+        "/img/Bone Straight/6/IMG_6666.jpg"
       ],
       category: "Bone Straight",
       inStock: true,
       isNew: true,
       isSale: false
     },
+    // Bone Straight - Product 7
     {
-      id: 14,
+      id: 9,
       name: "Royal Bone Straight",
       description: "Regal bone straight wig with premium craftsmanship and luxurious feel",
       images: [
-        "https://drive.google.com/thumbnail?id=1Xpl12uv2KHA6KyMfvl47JRJs3NIKM_xL&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1JHd8JYbmAf6ZR0jc8OWlfpy8iqP6m0Hg&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1JZOo9B4caiVu8alHGcVtuOOdBt4I6Yyd&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1XzhFb-6f8D72wX9r7Tdk8DaMZze6VMm-&sz=w1000"
+        "/img/Bone Straight/7/IMG_6652.jpg",
+        "/img/Bone Straight/7/IMG_6653.jpg",
+        "/img/Bone Straight/7/IMG_6654.jpg",
+        "/img/Bone Straight/7/IMG_6655.jpg",
+        "/img/Bone Straight/7/IMG_6656.jpg",
+        "/img/Bone Straight/7/IMG_6657.jpg"
       ],
       category: "Bone Straight",
       inStock: true,
       isNew: true,
       isSale: false
     },
+    // Braided Wigs - Product 1
     {
-      id: 15,
+      id: 10,
       name: "Premium Braided Wig",
       description: "Beautiful braided wig with intricate styling and authentic look",
       images: [
-        "https://drive.google.com/thumbnail?id=1-OfI74jx5h7vQb2KC8LvqfjEuw8xt61E&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1ksSzCkuVd43mbynPCvZuxZ5cEvv5-yjF&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1wVBl5SntLXMkYtwjKbfTRy0Q1s4ziJ9s&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1MR5TYbr37Wh3nDbKVVrna62NYhJ9eVug&sz=w1000"
+        "/img/Braided Wigs/1/IMG_6679.jpg",
+        "/img/Braided Wigs/1/IMG_6680.jpg",
+        "/img/Braided Wigs/1/IMG_6681.jpg",
+        "/img/Braided Wigs/1/IMG_6682.jpg"
       ],
       category: "Braided Wigs",
       inStock: true,
       isNew: true,
       isSale: false
     },
+    // Braided Wigs - Product 2
     {
-      id: 16,
+      id: 11,
       name: "Luxury Braided Wig",
       description: "Elegant braided wig with sophisticated design and premium quality",
       images: [
-        "https://drive.google.com/thumbnail?id=1Nh8E4KNPnuvDlgw1WID5XWXJ7yM1A278&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1vvgtgvkRZcr9TztS4Zm5tGMJKDv_tlSY&sz=w1000",
-        "https://drive.google.com/thumbnail?id=17UJ4-m15rQUIdjLv3ucGMLMs-zjNQPwh&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1wtHlza3WOoCKSG351Suwj09uIarHTAJV&sz=w1000"
+        "/img/Braided Wigs/2/IMG_6695.jpg",
+        "/img/Braided Wigs/2/IMG_6696.jpg",
+        "/img/Braided Wigs/2/IMG_6697.jpg",
+        "/img/Braided Wigs/2/IMG_6698.jpg"
       ],
       category: "Braided Wigs",
       inStock: true,
       isNew: true,
       isSale: false
     },
+    // Braided Wigs - Product 3
     {
-      id: 17,
+      id: 12,
       name: "Classic Braided Wig",
       description: "Timeless braided wig with traditional styling and exceptional craftsmanship",
       images: [
-        "https://drive.google.com/thumbnail?id=1ei5e3VniYPq_hzBayLQqiK21iU8c38Wt&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1-ZmLoysNEbBvns843G0Jprq0VId4skCd&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1LT6CQOSIRiGFp3f5dOluvl2KHNrK7-lA&sz=w1000",
-        "https://drive.google.com/thumbnail?id=190WVMujUb56obH7ZegOU_2ZcaLLZKUe5&sz=w1000"
+        "/img/Braided Wigs/3/IMG_6691.jpg",
+        "/img/Braided Wigs/3/IMG_6692.jpg",
+        "/img/Braided Wigs/3/IMG_6693.jpg",
+        "/img/Braided Wigs/3/IMG_6694.jpg"
       ],
       category: "Braided Wigs",
       inStock: true,
       isNew: true,
       isSale: false
     },
+    // Braided Wigs - Product 4
     {
-      id: 18,
+      id: 13,
       name: "Deluxe Braided Wig",
       description: "Premium braided wig with exquisite detailing and superior quality",
       images: [
-        "https://drive.google.com/thumbnail?id=1bqCw7KoGBhx0ttX64AzbDl9sjZ5CqTeP&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1kwEmsMYrKeIJ2Sro--NjgiE1uthJCPxN&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1kLBMryu7-DhAuYwh_eWD5v-X54cY2PW8&sz=w1000",
-        "https://drive.google.com/thumbnail?id=1C0UdUyAMzNgkZksWxHDh5nxqRWJtfhBh&sz=w1000"
+        "/img/Braided Wigs/4/IMG_6687.jpg",
+        "/img/Braided Wigs/4/IMG_6688.jpg",
+        "/img/Braided Wigs/4/IMG_6689.jpg",
+        "/img/Braided Wigs/4/IMG_6690.jpg"
       ],
       category: "Braided Wigs",
       inStock: true,
