@@ -5,6 +5,7 @@ const WigsSaleSection = () => {
   const [selectedCategory, setSelectedCategory] = useState('Random');
   const [selectedWig, setSelectedWig] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [imageLoading, setImageLoading] = useState({});
   
   const wigs = [
     {
@@ -337,16 +338,21 @@ const WigsSaleSection = () => {
                   setCurrentImageIndex(0);
                 }}
               >
-                {/* Main Image */}
+                {/* Main Image with Loading State */}
                 <motion.img 
                   src={wig.images[0]}
                     alt={wig.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover bg-gray-200"
                   whileHover={{ scale: 1.08 }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
                   loading="lazy"
                   onError={(e) => {
-                    e.target.src = 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=500&fit=crop';
+                    // Fallback to a placeholder if image fails to load
+                    e.target.src = 'https://via.placeholder.com/400x500/f3f4f6/ec4899?text=PrissyLawson';
+                  }}
+                  style={{
+                    minHeight: '100%',
+                    backgroundColor: '#f3f4f6'
                   }}
                 />
                 
@@ -505,7 +511,14 @@ const WigsSaleSection = () => {
               </div>
 
               {/* Image Gallery */}
-              <div className="relative bg-gray-50">
+              <div className="relative bg-gray-50 min-h-[60vh] flex items-center justify-center">
+                {/* Loading Spinner */}
+                {imageLoading[`modal-${currentImageIndex}`] && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-gray-50">
+                    <div className="w-12 h-12 border-4 border-pink-200 border-t-pink-500 rounded-full animate-spin"></div>
+                  </div>
+                )}
+                
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={currentImageIndex}
@@ -516,6 +529,12 @@ const WigsSaleSection = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.3 }}
+                    onLoadStart={() => setImageLoading(prev => ({ ...prev, [`modal-${currentImageIndex}`]: true }))}
+                    onLoad={() => setImageLoading(prev => ({ ...prev, [`modal-${currentImageIndex}`]: false }))}
+                    onError={(e) => {
+                      setImageLoading(prev => ({ ...prev, [`modal-${currentImageIndex}`]: false }));
+                      e.target.src = 'https://via.placeholder.com/400x500/f3f4f6/ec4899?text=Image+Not+Available';
+                    }}
                   />
                 </AnimatePresence>
 
