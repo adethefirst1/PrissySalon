@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const WigsSaleSection = () => {
@@ -221,17 +221,17 @@ const WigsSaleSection = () => {
   const categories = ['Random', 'Bone Straight', 'Burmese Curls', 'Body Wave', 'Pixie Curls', 'Braided Wigs'];
 
   // Function to get random wigs
-  const getRandomWigs = (count = 6) => {
+  const getRandomWigs = useCallback((count = 6) => {
     const shuffled = [...wigs].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, count);
-  };
+  }, [wigs]);
 
   // Update random wigs when component mounts or when Random is selected
-  React.useEffect(() => {
+  useEffect(() => {
     if (selectedCategory === 'Random') {
       setRandomWigs(getRandomWigs(6));
     }
-  }, [selectedCategory]);
+  }, [selectedCategory, getRandomWigs]);
 
   const filteredWigs = selectedCategory === 'Random' 
     ? randomWigs 
