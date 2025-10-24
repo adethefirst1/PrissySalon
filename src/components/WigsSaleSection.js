@@ -1,11 +1,10 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const WigsSaleSection = () => {
   const [selectedCategory, setSelectedCategory] = useState('Random');
   const [selectedWig, setSelectedWig] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [randomWigs, setRandomWigs] = useState([]);
   
   const wigs = [
     {
@@ -220,21 +219,26 @@ const WigsSaleSection = () => {
 
   const categories = ['Random', 'Bone Straight', 'Burmese Curls', 'Body Wave', 'Pixie Curls', 'Braided Wigs'];
 
-  // Function to get random wigs
-  const getRandomWigs = useCallback((count = 6) => {
+  // Memoize random wigs so they don't change on every render
+  const randomWigs = useMemo(() => {
     const shuffled = [...wigs].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, count);
-  }, [wigs]);
+    return shuffled.slice(0, 6);
+  }, []); // Empty dependency array means this only runs once on mount
 
-  // Update random wigs when component mounts or when Random is selected
+  // Function to shuffle random wigs when button is clicked
+  const [shuffledWigs, setShuffledWigs] = useState(randomWigs);
+
   useEffect(() => {
-    if (selectedCategory === 'Random') {
-      setRandomWigs(getRandomWigs(6));
-    }
-  }, [selectedCategory, getRandomWigs]);
+    setShuffledWigs(randomWigs);
+  }, [randomWigs]);
+
+  const getRandomWigs = () => {
+    const shuffled = [...wigs].sort(() => 0.5 - Math.random());
+    setShuffledWigs(shuffled.slice(0, 6));
+  };
 
   const filteredWigs = selectedCategory === 'Random' 
-    ? randomWigs 
+    ? shuffledWigs 
     : wigs.filter(wig => wig.category === selectedCategory);
 
 
@@ -321,7 +325,7 @@ const WigsSaleSection = () => {
           {/* Shuffle Button for Random Category */}
           {selectedCategory === 'Random' && (
             <motion.button
-              onClick={() => setRandomWigs(getRandomWigs(6))}
+              onClick={getRandomWigs}
               className="px-4 py-3 rounded-full font-poppins font-medium bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg hover:shadow-xl transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
