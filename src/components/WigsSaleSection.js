@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const WigsSaleSection = () => {
@@ -225,20 +225,8 @@ const WigsSaleSection = () => {
     return shuffled.slice(0, 6);
   }, []); // Empty dependency array means this only runs once on mount
 
-  // Function to shuffle random wigs when button is clicked
-  const [shuffledWigs, setShuffledWigs] = useState(randomWigs);
-
-  useEffect(() => {
-    setShuffledWigs(randomWigs);
-  }, [randomWigs]);
-
-  const getRandomWigs = () => {
-    const shuffled = [...wigs].sort(() => 0.5 - Math.random());
-    setShuffledWigs(shuffled.slice(0, 6));
-  };
-
   const filteredWigs = selectedCategory === 'Random' 
-    ? shuffledWigs 
+    ? randomWigs 
     : wigs.filter(wig => wig.category === selectedCategory);
 
 
@@ -317,30 +305,10 @@ const WigsSaleSection = () => {
                   }`}>
                     {count}
                   </span>
-                </div>
+        </div>
               </motion.button>
             );
           })}
-          
-          {/* Shuffle Button for Random Category */}
-          {selectedCategory === 'Random' && (
-            <motion.button
-              onClick={getRandomWigs}
-              className="px-4 py-3 rounded-full font-poppins font-medium bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg hover:shadow-xl transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="flex items-center gap-2">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                </svg>
-                Shuffle
-        </div>
-            </motion.button>
-          )}
         </motion.div>
 
         {/* Wigs Grid */}
@@ -443,13 +411,13 @@ const WigsSaleSection = () => {
                 </span>
                 
                 <h3 className="font-playfair text-2xl font-bold text-gray-900 mb-3 leading-tight">
-                  {wig.name}
-                </h3>
+                    {wig.name}
+                  </h3>
                 
                 <p className="font-poppins text-gray-600 text-sm mb-6 leading-relaxed line-clamp-2">
-                  {wig.description}
-                </p>
-                
+                    {wig.description}
+                  </p>
+                  
                 {/* Stock Status */}
                 <div className="flex items-center gap-2 mb-6">
                   <div className={`w-2 h-2 rounded-full ${wig.inStock ? 'bg-green-500' : 'bg-red-500'} animate-pulse`}></div>
