@@ -363,7 +363,7 @@ const WigsSaleSection = () => {
             >
               {/* Wig Image Container */}
               <div 
-                className="relative h-64 sm:h-72 overflow-hidden cursor-pointer"
+                className="relative h-80 sm:h-96 overflow-hidden cursor-pointer rounded-t-2xl bg-gray-100"
                 onClick={() => {
                   setSelectedWig(wig);
                   setCurrentImageIndex(0);
@@ -374,75 +374,89 @@ const WigsSaleSection = () => {
                   src={wig.images[0]}
                     alt={wig.name}
                   className="w-full h-full object-cover"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.6 }}
+                  whileHover={{ scale: 1.08 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  loading="lazy"
+                  onError={(e) => {
+                    e.target.src = 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=500&fit=crop';
+                  }}
                 />
                 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
                 
                 {/* Gallery Indicator */}
-                <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 flex items-center gap-1">
+                <div className="absolute top-4 right-4 bg-black/40 backdrop-blur-md rounded-full px-3 py-2 flex items-center gap-2 border border-white/20">
                   <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
-                  <span className="text-white text-xs font-medium">{wig.images.length}</span>
+                  <span className="text-white text-xs font-semibold">{wig.images.length} photos</span>
                   </div>
                   
                 {/* Badges */}
-                <div className="absolute top-4 left-4 flex flex-col gap-2">
+                <div className="absolute top-4 left-4 flex flex-col gap-2 z-10">
                   {wig.isNew && (
-                    <span className="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                    <motion.span 
+                      className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg backdrop-blur-sm"
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ delay: 0.2 }}
+                    >
                       NEW
-                    </span>
+                    </motion.span>
                   )}
                   {wig.isSale && (
-                    <span className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                    <motion.span 
+                      className="bg-gradient-to-r from-red-500 to-rose-500 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg backdrop-blur-sm"
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ delay: 0.3 }}
+                    >
                       SALE
-                    </span>
+                    </motion.span>
                   )}
                 </div>
 
                 
                 {/* Quick View Button */}
                 <motion.div 
-                  className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                  whileHover={{ scale: 1.05 }}
+                  className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-400 flex items-center justify-center"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
                 >
-                  <button className="bg-white text-gray-800 px-6 py-3 rounded-full font-poppins font-medium">
-                    Quick View
-                  </button>
+                  <motion.button 
+                    className="bg-white text-gray-800 px-8 py-3.5 rounded-full font-poppins font-semibold shadow-2xl hover:shadow-pink-500/50 hover:bg-gradient-to-r hover:from-pink-500 hover:to-rose-500 hover:text-white transition-all duration-300 border-2 border-white/20"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    View Details
+                  </motion.button>
                 </motion.div>
               </div>
 
               {/* Wig Content */}
-              <div className="p-6 sm:p-8 relative">
-                <div className="absolute top-0 left-8 w-16 h-0.5 bg-gradient-to-r from-pink-400 to-rose-400 transform -translate-y-1"></div>
+              <div className="p-6 sm:p-8 relative bg-white">
+                <div className="absolute top-0 left-8 w-20 h-1 bg-gradient-to-r from-pink-500 via-rose-400 to-pink-300 transform -translate-y-1 rounded-full"></div>
                 
                 {/* Category */}
-                <span className="text-pink-500 text-sm font-poppins font-medium uppercase tracking-wider">
+                <span className="inline-block bg-pink-50 text-pink-600 text-xs font-poppins font-bold uppercase tracking-wider px-3 py-1.5 rounded-full mb-3">
                   {wig.category}
                 </span>
                 
-                <motion.h3 
-                  className="font-playfair text-xl font-semibold text-gray-800 mb-3 mt-2"
-                  whileHover={{ color: "#f472b6" }}
-                  transition={{ duration: 0.3 }}
-                >
-                    {wig.name}
-                </motion.h3>
+                <h3 className="font-playfair text-2xl font-bold text-gray-900 mb-3 leading-tight">
+                  {wig.name}
+                </h3>
                 
-                  <p className="font-poppins text-gray-600 text-sm mb-4 leading-relaxed">
-                    {wig.description}
-                  </p>
-                  
+                <p className="font-poppins text-gray-600 text-sm mb-6 leading-relaxed line-clamp-2">
+                  {wig.description}
+                </p>
                 
-                  
-                  {/* Elegant Underline */}
-                <motion.div 
-                  className="w-12 h-0.5 bg-gradient-to-r from-pink-300 to-rose-300 mb-6"
-                  whileHover={{ width: "48px" }}
-                  transition={{ duration: 0.5 }}
-                ></motion.div>
+                {/* Stock Status */}
+                <div className="flex items-center gap-2 mb-6">
+                  <div className={`w-2 h-2 rounded-full ${wig.inStock ? 'bg-green-500' : 'bg-red-500'} animate-pulse`}></div>
+                  <span className={`text-xs font-medium ${wig.inStock ? 'text-green-600' : 'text-red-600'}`}>
+                    {wig.inStock ? 'In Stock' : 'Out of Stock'}
+                  </span>
+                </div>
                 
                 {/* Buy Now Button */}
                 <motion.button
@@ -450,14 +464,34 @@ const WigsSaleSection = () => {
                     const message = `Hi! I want to buy the ${wig.name} wig. Please send me pricing and availability.`;
                     window.open(`https://wa.me/2349090396515?text=${encodeURIComponent(message)}`, '_blank');
                   }}
-                  className="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-poppins font-semibold py-3 px-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
-                  whileHover={{ scale: 1.02 }}
+                  className="w-full bg-gradient-to-r from-pink-500 via-rose-500 to-pink-600 text-white font-poppins font-bold py-4 px-6 rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-pink-500/50 transition-all duration-300 flex items-center justify-center gap-3 group overflow-hidden relative"
+                  whileHover={{ scale: 1.03, y: -2 }}
                   whileTap={{ scale: 0.98 }}
+                  disabled={!wig.inStock}
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01" />
+                  {/* Shine Effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                    animate={{ x: ['-100%', '200%'] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                  />
+                  
+                  <svg className="w-5 h-5 relative z-10 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                   </svg>
-                  Buy Now
+                  <span className="relative z-10 text-base tracking-wide">
+                    {wig.inStock ? 'Buy Now' : 'Out of Stock'}
+                  </span>
+                  <motion.svg 
+                    className="w-4 h-4 relative z-10" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                  </motion.svg>
                 </motion.button>
                 
               </div>
@@ -477,40 +511,45 @@ const WigsSaleSection = () => {
             onClick={() => setSelectedWig(null)}
           >
             <motion.div
-              className="bg-white rounded-3xl max-w-md w-full max-h-[95vh] overflow-hidden"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
+              className="bg-white rounded-3xl max-w-md w-full max-h-[95vh] overflow-hidden shadow-2xl"
+              initial={{ scale: 0.8, opacity: 0, y: 50 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.8, opacity: 0, y: 50 }}
+              transition={{ type: "spring", damping: 25 }}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Header */}
-              <div className="flex items-center justify-between p-6 border-b border-gray-200">
-                <div>
-                  <h3 className="font-playfair text-2xl font-bold text-gray-800">{selectedWig.name}</h3>
-                  <p className="font-poppins text-gray-600 text-sm">{selectedWig.description}</p>
+              <div className="flex items-center justify-between p-6 border-b border-gray-100 bg-gradient-to-r from-pink-50 to-rose-50">
+                <div className="flex-1 pr-4">
+                  <h3 className="font-playfair text-2xl font-bold text-gray-900 mb-1">{selectedWig.name}</h3>
+                  <p className="font-poppins text-gray-600 text-sm line-clamp-2">{selectedWig.description}</p>
                 </div>
-                <button
+                <motion.button
                   onClick={() => setSelectedWig(null)}
-                  className="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors"
+                  className="w-12 h-12 bg-white hover:bg-gray-50 rounded-full flex items-center justify-center transition-all shadow-lg hover:shadow-xl flex-shrink-0"
+                  whileHover={{ scale: 1.1, rotate: 90 }}
+                  whileTap={{ scale: 0.9 }}
                 >
-                  <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
                   </svg>
-                </button>
+                </motion.button>
               </div>
 
               {/* Image Gallery */}
-              <div className="relative">
-                <motion.img
-                  key={currentImageIndex}
-                  src={selectedWig.images[currentImageIndex]}
-                  alt={`${selectedWig.name} - Image ${currentImageIndex + 1}`}
-                  className="w-full h-auto max-h-[60vh] object-contain"
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -50 }}
-                  transition={{ duration: 0.3 }}
-                />
+              <div className="relative bg-gray-50">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={currentImageIndex}
+                    src={selectedWig.images[currentImageIndex]}
+                    alt={`${selectedWig.name} - Image ${currentImageIndex + 1}`}
+                    className="w-full h-auto max-h-[60vh] object-contain"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </AnimatePresence>
 
                 {/* Navigation Arrows */}
                 {selectedWig.images.length > 1 && (
