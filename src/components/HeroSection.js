@@ -42,7 +42,7 @@ const HeroSection = () => {
     {
       id: 5,
       url: "/photo.jpg",
-      alt: "Prissy Salon interior with styling stations"
+      alt: "PrissyLawson Hair & Beauty interior with styling stations"
     }
   ];
 
@@ -72,7 +72,7 @@ const HeroSection = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1, delay: 0.8 }}
                   >
-                    Prissy Salon
+                    PrissyLawson
                   </motion.h1>
                   <motion.h2 
                     className="font-playfair text-xl md:text-2xl lg:text-3xl font-extralight mb-4 text-cream-100 drop-shadow-md"

@@ -12,7 +12,7 @@ const Footer = () => {
           {/* Salon Name */}
           <div className="lg:col-span-1 text-center sm:text-left">
             <h3 className="font-playfair text-xl sm:text-2xl font-light mb-2">
-              Prissy Salon
+              PrissyLawson
             </h3>
             <p className="font-poppins text-cream-200 text-xs sm:text-sm font-light">
               Redefining Beauty & Elegance
@@ -112,7 +112,7 @@ const Footer = () => {
         <div className="border-t border-cream-700 mt-4 sm:mt-6 pt-3 sm:pt-4">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
             <p className="font-poppins text-cream-300 text-xs text-center sm:text-left">
-              © {currentYear} Prissy Salon. All rights reserved.
+              © {currentYear} PrissyLawson. All rights reserved.
             </p>
             <div className="flex space-x-3 sm:space-x-4">
               <motion.button 
