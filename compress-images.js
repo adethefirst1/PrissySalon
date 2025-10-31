@@ -106,3 +106,4 @@ try {
   console.log('   node compress-images.js\n');
 }
 
+

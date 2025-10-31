@@ -49,7 +49,7 @@ const ServicesSection = () => {
 
   const handleWhatsAppClick = (service) => {
     const message = `Hi! I'm interested in booking the ${service.title} service at PrissyLawson. Can you provide more information about pricing and availability?`;
-    const whatsappUrl = `https://wa.me/2349090396515?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/2349060555759?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 

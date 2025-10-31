@@ -438,7 +438,7 @@ const WigsSaleSection = () => {
                 <motion.button
                   onClick={() => {
                     const message = `Hi! I want to buy the ${wig.name} wig. Please send me pricing and availability.`;
-                    window.open(`https://wa.me/2349090396515?text=${encodeURIComponent(message)}`, '_blank');
+                    window.open(`https://wa.me/2349060555759?text=${encodeURIComponent(message)}`, '_blank');
                   }}
                   className="w-full bg-gradient-to-r from-pink-500 via-rose-500 to-pink-600 text-white font-poppins font-bold py-4 px-6 rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-pink-500/50 transition-all duration-300 flex items-center justify-center gap-3 group overflow-hidden relative"
                   whileHover={{ scale: 1.03, y: -2 }}
@@ -602,7 +602,7 @@ const WigsSaleSection = () => {
                 <motion.button
                   onClick={() => {
                     const message = `Hi! I want to buy the ${selectedWig.name} wig. Please send me pricing and availability.`;
-                    window.open(`https://wa.me/2349090396515?text=${encodeURIComponent(message)}`, '_blank');
+                    window.open(`https://wa.me/2349060555759?text=${encodeURIComponent(message)}`, '_blank');
                   }}
                   className="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-poppins font-semibold py-4 px-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3"
                   whileHover={{ scale: 1.02 }}

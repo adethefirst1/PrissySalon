@@ -1,5 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const AppointmentSection = () => {
   return (
@@ -10,9 +13,68 @@ const AppointmentSection = () => {
           <h2 className="font-playfair text-2xl sm:text-3xl md:text-4xl font-light text-gray-700 mb-4 sm:mb-6">
             Follow Our Journey
           </h2>
-          <p className="font-poppins text-sm sm:text-base text-gray-600 max-w-3xl mx-auto mb-8 sm:mb-12 font-light px-4">
+          <p className="font-poppins text-sm sm:text-base text-gray-600 max-w-3xl mx-auto mb-6 sm:mb-8 font-light px-4">
             Connect with us on social media for the latest updates, beauty tips, and behind-the-scenes content.
           </p>
+
+          {/* Gallery - placed under header and above map/social handles */}
+          <div className="max-w-7xl mx-auto mb-8 sm:mb-12">
+            <h3 className="font-playfair text-xl sm:text-2xl font-light text-gray-700 mb-4">
+              Gallery
+            </h3>
+            <div className="relative">
+              <div className="h-[300px] sm:h-[340px] md:h-[380px] max-h-[400px]">
+                <Slider
+                  dots
+                  arrows
+                  infinite
+                  autoplay
+                  speed={600}
+                  autoplaySpeed={3000}
+                  slidesToShow={4}
+                  slidesToScroll={1}
+                  responsive={[
+                    { breakpoint: 1280, settings: { slidesToShow: 4 } },
+                    { breakpoint: 1024, settings: { slidesToShow: 3 } },
+                    { breakpoint: 768, settings: { slidesToShow: 2 } },
+                    { breakpoint: 480, settings: { slidesToShow: 1 } },
+                  ]}
+                >
+                  {[
+                    '/img/gallery/IMG_3072.jpg',
+                    '/img/gallery/IMG_3145.jpg',
+                    '/img/gallery/IMG_3184.jpg',
+                    '/img/gallery/IMG_3185.jpg',
+                    '/img/gallery/IMG_3187.jpg',
+                    '/img/gallery/IMG_3189.jpg',
+                    '/img/gallery/IMG_3194.jpg',
+                    '/img/gallery/IMG_3195.jpg',
+                    '/img/gallery/IMG_3197.jpg',
+                    '/img/gallery/IMG_3205.jpg',
+                    '/img/gallery/IMG_3211.jpg',
+                    '/img/gallery/IMG_3214.jpg',
+                    '/img/gallery/IMG_3223.jpg',
+                    '/img/gallery/IMG_3263.jpg',
+                    '/img/gallery/IMG_3268.jpg',
+                    '/img/gallery/IMG_3279.jpg',
+                    '/img/gallery/IMG_3294.jpg',
+                  ].map((src, idx) => (
+                    <div key={idx} className="px-2 sm:px-3">
+                      <div className="w-full h-[260px] sm:h-[300px] md:h-[340px] rounded-2xl overflow-hidden shadow-md shadow-black/10 bg-gray-100">
+                        <img
+                          src={src}
+                          alt={`Salon gallery ${idx + 1}`}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                          onError={(e) => { e.currentTarget.src = '/photo.jpg'; }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </Slider>
+              </div>
+            </div>
+          </div>
 
           {/* Split Layout - Social Media Left, Map Right */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 w-full">
@@ -118,27 +180,27 @@ const AppointmentSection = () => {
               {/* Google Map */}
               <div className="relative rounded-xl sm:rounded-2xl overflow-hidden h-48 sm:h-56 lg:h-64">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.4!2d3.4!3d6.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8f8f8f8f8f8f%3A0x1234567890123456!2sBadagry%20Roundabout%2C%20Lagos%20State%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1631234567890!5m2!1sen!2sng"
+                  src="https://www.google.com/maps?q=Block%20C%2C%20Shop%2016%2F17%2C%20Kiki%20Shopping%20Complex%20Roundabout%2C%20Badagry%2C%20Lagos%20State&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen={true}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Kiki Plaza, Badagry Roundabout, Lagos State"
+                  title="Block C, Shop 16/17, Kiki Shopping Complex Roundabout, Badagry, Lagos State"
                 />
               </div>
               
               {/* Address Info */}
               <div className="text-center mt-4 sm:mt-6">
                 <p className="font-poppins text-gray-700 font-medium text-sm sm:text-base mb-1">
-                  Kiki Plaza, Badagry Roundabout
+                  Block C, Shop 16/17, Kiki Shopping Complex Roundabout
                 </p>
                 <p className="font-poppins text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">
-                  Lagos State, Nigeria
+                  Badagry, Lagos State, Nigeria
                 </p>
                 <motion.a 
-                  href="https://www.google.com/maps/search/Kiki+Plaza+Badagry+Roundabout+Lagos+State"
+                  href="https://www.google.com/maps/search/?api=1&query=Block+C%2C+Shop+16%2F17%2C+Kiki+Shopping+Complex+Roundabout%2C+Badagry%2C+Lagos+State"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-luxury inline-block group"

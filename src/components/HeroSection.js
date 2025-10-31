@@ -19,31 +19,11 @@ const HeroSection = () => {
   };
 
   const heroImages = [
-    {
-      id: 1,
-      url: "https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
-      alt: "Elegant hair styling"
-    },
-    {
-      id: 2,
-      url: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1969&q=80",
-      alt: "Professional makeup application"
-    },
-    {
-      id: 3,
-      url: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "Luxury nail care"
-    },
-    {
-      id: 4,
-      url: "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "Relaxing facial treatment"
-    },
-    {
-      id: 5,
-      url: "/photo.jpg",
-      alt: "PrissyLawson Hair & Beauty interior with styling stations"
-    }
+    { id: 1, url: "/img/header/IMG_3054.jpg", alt: "PrissyLawson header 1" },
+    { id: 2, url: "/img/header/IMG_3059.jpg", alt: "PrissyLawson header 2" },
+    { id: 3, url: "/img/header/IMG_3073.jpg", alt: "PrissyLawson header 3" },
+    { id: 4, url: "/img/header/IMG_3075.jpg", alt: "PrissyLawson header 4" },
+    { id: 5, url: "/img/header/IMG_3082.jpg", alt: "PrissyLawson header 5" },
   ];
 
   return (
@@ -51,42 +31,54 @@ const HeroSection = () => {
       <Slider {...settings}>
         {heroImages.map((image) => (
           <div key={image.id} className="relative h-screen">
+            {/* Blurred background image layer */}
+            <img 
+              src={image.url}
+              alt={image.alt}
+              className="absolute inset-0 w-full h-full object-cover blur-sm md:blur scale-105"
+            />
             <div 
-              className="h-full w-full bg-cover bg-center bg-no-repeat"
+              className="relative h-full w-full bg-cover bg-center bg-no-repeat z-10"
               style={{ backgroundImage: `url(${image.url})` }}
             >
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blush-200/30 to-pearl-300/20"></div>
+              {/* Overlay: semi-transparent dark layer between image and text */}
+              <div
+                className="absolute inset-0 z-10"
+                style={{ backgroundColor: 'rgba(0,0,0,0.45)' }}
+              ></div>
               
               {/* Content */}
-              <div className="absolute inset-0 flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center justify-center px-4 z-20">
                 <motion.div 
-                  className="text-center text-white px-4 max-w-4xl mx-auto"
+                  className="text-center max-w-4xl mx-auto px-4"
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, delay: 0.5 }}
                 >
                   <motion.h1 
-                    className="font-playfair text-4xl md:text-6xl lg:text-7xl font-light mb-6 text-cream-50 drop-shadow-lg"
+                    className="font-playfair text-4xl md:text-6xl lg:text-7xl font-semibold mb-6 text-white"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1, delay: 0.8 }}
+                    style={{ textShadow: '0 2px 6px rgba(0,0,0,0.6)' }}
                   >
                     PrissyLawson
                   </motion.h1>
                   <motion.h2 
-                    className="font-playfair text-xl md:text-2xl lg:text-3xl font-extralight mb-4 text-cream-100 drop-shadow-md"
+                    className="font-playfair text-xl md:text-2xl lg:text-3xl font-medium mb-4 text-[#f5f0eb]"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 1.2 }}
+                    style={{ textShadow: '0 2px 6px rgba(0,0,0,0.6)' }}
                   >
                     Hair & Beauty
                   </motion.h2>
                   <motion.p 
-                    className="font-poppins text-base md:text-lg lg:text-xl font-thin text-cream-200 drop-shadow-sm"
+                    className="font-poppins text-base md:text-lg lg:text-xl font-normal text-[#f5f0eb]"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 1.5 }}
+                    style={{ textShadow: '0 2px 6px rgba(0,0,0,0.6)' }}
                   >
                     Be bold, Be beautiful, Be you!
                   </motion.p>

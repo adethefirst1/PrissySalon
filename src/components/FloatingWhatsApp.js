@@ -2,7 +2,7 @@ import React from 'react';
 
 const FloatingWhatsApp = () => {
   const handleWhatsAppClick = () => {
-    const phoneNumber = "2349090396515";
+    const phoneNumber = "2349060555759";
     const message = "Hi! I'd like to book an appointment at PrissyLawson Hair & Beauty.";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');

@@ -24,16 +24,16 @@ const Footer = () => {
             <div className="flex items-center justify-center sm:justify-start space-x-2">
               <span className="text-cream-300">📍</span>
               <p className="font-poppins text-cream-200 text-xs sm:text-sm">
-                Kiki Plaza, Badagry Roundabout
+                Block C, Shop 16/17, Kiki Shopping Complex Roundabout, Badagry, Lagos State
               </p>
             </div>
             <div className="flex items-center justify-center sm:justify-start space-x-2">
               <span className="text-cream-300">📞</span>
               <a 
-                href="tel:+2349090396515"
+                href="tel:+2349060555759"
                 className="font-poppins text-cream-200 hover:text-rose-300 text-xs sm:text-sm transition-colors duration-300 cursor-pointer"
               >
-                +2349090396515
+                +2349060555759
               </a>
             </div>
             <div className="flex items-center justify-center sm:justify-start space-x-2">
